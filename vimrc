@@ -44,6 +44,8 @@ set backup                        " enable backups
 let mapleader = ","
 let maplocalleader = "\\"
 
+nnoremap ; :
+
 " Make Y not dumb
 nnoremap Y y$
 
@@ -94,6 +96,9 @@ let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', '\.rbc$']
 "noremap k gj
 "noremap l gk
 "noremap ; l
+
+noremap j gj
+noremap k gk
 
 " Easy buffer navigation
 " Note: For this section to make any sense you need to remap Ctrl-; to Ctrl-g at
@@ -279,16 +284,6 @@ let Tlist_Show_One_File = 1
 map <F4> :TlistToggle<cr>
 map <leader>T :!/usr/local/bin/ctags --exclude='**/ckeditor' -R . $(test -f .venv && echo ~/lib/virtualenvs/`cat .venv`)<CR>
 
-" Rope and Bike.
-let g:bike_exceptions=1
-source $HOME/.vim/sadness/sadness.vim
-
-let ropevim_enable_shortcuts = 0
-let ropevim_guess_project = 1
-noremap <leader>rr :RopeRename<CR>
-vnoremap <leader>rm :RopeExtractMethod<CR>
-noremap <leader>roi :RopeOrganizeImports<CR>
-
 " Gundo
 nnoremap U :GundoToggle<CR>
 let g:gundo_debug = 1
@@ -350,13 +345,6 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 inoremap <c-cr> <esc>A<cr>
 inoremap <s-cr> <esc>A:<cr>
 au BufNewFile,BufRead *.html nnoremap <s-cr> vit<esc>a<cr><esc>vito<esc>i<cr><esc>
-
-" VimClojure
-let vimclojure#HighlightBuiltins = 1
-let vimclojure#ParenRainbow = 1
-let vimclojure#WantNailgun = 1
-let vimclojure#NailgunClient = $HOME . "/.vim/bundle/vimclojure/bin/ng"
-let vimclojure#SplitPos = "right"
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -450,9 +438,22 @@ if has('gui_running')
         " Command-Shift-F for Ack
         macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
         map <D-F> :Ack<space>
+
+        " ConqueTerm wrapper
+        function StartTerm()
+          execute 'ConqueTerm ' . $SHELL . ' --login'
+          setlocal listchars=tab:\ \ 
+        endfunction
+
+        " Command-e for ConqueTerm
+        map <D-e> :call StartTerm()<CR>
+
+        " Command-/ to toggle comments
+        map <D-/> <plug>NERDCommenterToggle<CR>
+
     end
 
-    let g:sparkupExecuteMapping = '<D-e>'
+    "let g:sparkupExecuteMapping = '<D-e>'
 
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 
