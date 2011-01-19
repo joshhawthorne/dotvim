@@ -79,6 +79,7 @@ set background=dark
 "colorscheme molokai
 colorscheme desertEx
 
+
 " NERD Tree
 map <F2> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', '\.rbc$']
@@ -527,10 +528,18 @@ RUBY
         autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 
 
+		" Without setting this, ZoomWin restores windows in a way that causes
+		" equalalways behavior to be triggered the next time CommandT is used.
+		" This is likely a bludgeon to solve some other issue, but it works
+		set noequalalways
+
         " Command-T for CommandT
         let g:CommandTMaxHeight=20
         macmenu &File.New\ Tab key=<nop>
         map <D-t> :CommandT<CR>
+
+		" ZoomWin configuration
+		map <leader><leader> :ZoomWin<CR>
 
         " Command-Shift-F for Ack
         macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
