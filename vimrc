@@ -151,6 +151,9 @@ nnoremap K <nop>
 au FileType php set noexpandtab
 au FileType php nnoremap <leader>f Vatzf
 
+" Thorfile, Rakefile and Gemfile are Ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
+
 au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 au BufNewFile,BufRead *.html setlocal foldmethod=manual
 au BufNewFile,BufRead *.html nnoremap <buffer> <localleader>f Vatzf
@@ -565,6 +568,8 @@ RUBY
 
     inoremenu <silent>&Plugin.QuickCursor.CloseBuffer <Esc>:w<cr>:BufClose<cr>
     nnoremenu <silent>&Plugin.QuickCursor.CloseBuffer :w<cr>:BufClose<cr>
+
+    let g:ruby_debugger_debug_mode = 1
 else
     set nocursorline
 endif
