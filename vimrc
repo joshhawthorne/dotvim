@@ -527,7 +527,7 @@ RUBY
 
                 
         " Project Tree
-        autocmd VimEnter * NERDTree
+        "autocmd VimEnter * NERDTree
         autocmd VimEnter * wincmd p
         autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 
