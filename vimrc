@@ -77,7 +77,8 @@ set listchars=tab:▸\ ,eol:¬
 syntax on
 set background=dark
 "colorscheme molokai
-colorscheme desertEx
+"colorscheme desertEx
+colorscheme solarized
 
 
 " NERD Tree
