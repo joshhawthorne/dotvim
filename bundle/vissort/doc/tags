@@ -1,0 +1,7 @@
+bisort	vissort.txt	/*bisort*
+blocksort	vissort.txt	/*blocksort*
+vissort	vissort.txt	/*vissort*
+vissort-column	vissort.txt	/*vissort-column*
+vissort-contents	vissort.txt	/*vissort-contents*
+vissort-copyright	vissort.txt	/*vissort-copyright*
+vissort.txt	vissort.txt	/*vissort.txt*
