@@ -1,5 +1,6 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 
 set nocompatible
@@ -427,6 +428,9 @@ endfunction
 command! HgDiffCurrent call s:HgDiffCurrentFile()
 
 nmap <leader>d :HgDiffCurrent<cr>
+
+" RagTag
+let g:ragtag_global_maps = 1 
 
 " MacVim
 if has('gui_running')
